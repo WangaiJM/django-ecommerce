@@ -1,14 +1,55 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Store</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
-  <body>
-    <h3>store</h3>
-  </body>
-</html>
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<div class="row">
+  <div class="col-lg-4">
+    <img
+      src="{% static 'images/image-placeholder.jpg' %}"
+      alt="Placeholder Image"
+      class="thumbnail"
+    />
+    <div class="box-element product">
+      <h6><strong>Product</strong></h6>
+      <hr />
+
+      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <a href="#" class="btn btn-outline-success">View</a>
+      <h4 style="float: right">
+        <strong>Ksh. 20</strong>
+      </h4>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <img
+      src="{% static 'images/image-placeholder.jpg' %}"
+      alt="Placeholder Image"
+      class="thumbnail"
+    />
+    <div class="box-element product">
+      <h6><strong>Product</strong></h6>
+      <hr />
+
+      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <a href="#" class="btn btn-outline-success">View</a>
+      <h4 style="float: right">
+        <strong>Ksh. 20</strong>
+      </h4>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <img
+      src="{% static 'images/image-placeholder.jpg' %}"
+      alt="Placeholder Image"
+      class="thumbnail"
+    />
+    <div class="box-element product">
+      <h6><strong>Product</strong></h6>
+      <hr />
+
+      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <a href="#" class="btn btn-outline-success">View</a>
+      <h4 style="float: right">
+        <strong>Ksh. 20</strong>
+      </h4>
+    </div>
+  </div>
+</div>
+{% endblock%}
