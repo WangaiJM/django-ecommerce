@@ -9,10 +9,10 @@
       <table class="table">
         <tr>
           <th>
-            <h5>Items: <strong>3</strong></h5>
+            <h5>Items: <strong>{{ order.get_cart_items }}</strong></h5>
           </th>
           <th>
-            <h5>totals: <strong>Ksh. 42</strong></h5>
+            <h5>totals: <strong>Ksh. {{ order.get_cart_total }}</strong></h5>
           </th>
           <th>
             <a
@@ -34,7 +34,17 @@
         <div style="flex: 1"><strong>Quantity</strong></div>
         <div style="flex: 1"><strong>Total</strong></div>
       </div>
+      {% for item in items %}
       <div class="cart-row">
+        {% if item.product.image %}
+        <div style="flex: 2">
+          <img
+            src="{{ item.product.image.url }}"
+            alt="Placeholder"
+            class="row-image"
+          />
+        </div>
+        {% else %}
         <div style="flex: 2">
           <img
             src="{% static 'images/image-placeholder.jpg' %}"
@@ -42,10 +52,11 @@
             class="row-image"
           />
         </div>
-        <div style="flex: 2">Product 1</div>
-        <div style="flex: 1">Ksh. 20</div>
+        {% endif %}
+        <div style="flex: 2">{{item.product.name}}</div>
+        <div style="flex: 1">{{item.product.price|floatformat:2}}</div>
         <div style="flex: 1">
-          <p class="quantity">2</p>
+          <p class="quantity">{{item.quantity}}</p>
           <div class="quantity">
             <img
               src="{% static 'images/arrow-up.png' %}"
@@ -59,8 +70,9 @@
             />
           </div>
         </div>
-        <div style="flex: 1">Ksh. 40</div>
+        <div style="flex: 1">Ksh. {{item.get_total}}</div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </div>

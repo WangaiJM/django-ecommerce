@@ -94,8 +94,17 @@
       <hr />
       <h3>Order Summary</h3>
       <hr />
-
+      {% for item in items %}
       <div class="cart-row">
+        {% if item.product.image %}
+        <div style="flex: 2">
+          <img
+            src="{{ item.product.image.url }}"
+            alt="Placeholder"
+            class="row-image"
+          />
+        </div>
+        {% else %}
         <div style="flex: 2">
           <img
             src="{% static 'images/image-placeholder.jpg' %}"
@@ -103,12 +112,14 @@
             class="row-image"
           />
         </div>
-        <div style="flex: 2">Product 1</div>
-        <div style="flex: 1">Ksh. 20</div>
-        <div style="flex: 1"><p>x2</p></div>
+        {% endif %}
+        <div style="flex: 2">{{item.product.name}}</div>
+        <div style="flex: 1">Ksh. {{item.product.price|floatformat:2}}</div>
+        <div style="flex: 1"><p>x{{item.quantity}}</p></div>
       </div>
-      <h5>Items: 2</h5>
-      <h5>Total: Ksh. 40</h5>
+      {% endfor %}
+      <h5>Items: {{ order.get_cart_items }}</h5>
+      <h5>Total: Ksh. {{ order.get_cart_total }}</h5>
     </div>
   </div>
 </div>
